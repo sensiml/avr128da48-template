@@ -25,7 +25,7 @@ The fan states that the model can recognize (shown in the video above) are summa
 ## Software Used
 * MPLAB® X IDE (>=5.45 Recommended) [(microchip.com/mplab/mplab-x-ide)](http://www.microchip.com/mplab/mplab-x-ide)
 * MPLAB® XC8 (>=2.32 Recommended) [(microchip.com/mplab/compilers)](http://www.microchip.com/mplab/compilers)
-* MPLAB® Code Configurator (MCC) (>=5.03 Recommended) [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
+* MPLAB® Code Configurator (MCC) (>=5.1.0 Recommended) [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
 * MPLAB® Code Configurator (MCC) Device Libraries AVR MCUs [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
 * Microchip AVR-Dx Series Device Support (1.9.119 Recommended) [(packs.download.microchip.com)](https://packs.download.microchip.com)
 
