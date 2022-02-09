@@ -37,34 +37,6 @@
             }
         },
         "author": "Thomas Garcia",
-        "subcategories": [
-            "MCC",
-            "Machine Learning",
-            [
-                "Peripherals",
-                "CCP"
-            ],
-            [
-                "Peripherals",
-                "GPIO"
-            ],
-            [
-                "Peripherals",
-                "SPI"
-            ],
-            [
-                "Peripherals",
-                "TCA"
-            ],
-            [
-                "Peripherals",
-                "TWI"
-            ],
-            [
-                "Peripherals",
-                "USART"
-            ]
-        ],
         "peripherals": [
             "CCP",
             "GPIO",
