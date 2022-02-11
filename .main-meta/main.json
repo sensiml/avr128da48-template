@@ -4,7 +4,7 @@
     "content": {
         "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu8.mplabx.project.avr128da48-curiosity-sensiml-fan-monitoring-mplab-mcc",
-        "version": "1.0.2",
+        "version": "1.0.3",
         "displayName": "Fan Condition Monitoring using AVR128DA48 Curiosity Nano",
         "projectName": "avr128da48-curiosity-sensiml-fan-monitoring-mplab-mcc",
         "shortDescription": "This repository contains code that demonstrates how to classify the operational state of a Honeywell HT-900 fan using the SensiML SDK. It is a companion to the \"Fan Condition Monitoring on the AVR DA\" tutorial on the microchipdeveloper website.        ",
