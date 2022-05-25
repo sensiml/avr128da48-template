@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, SensiML Corporation. All rights reserved.
+ * Copyright (c) 2022, SensiML Corporation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -41,6 +41,15 @@ typedef float FVCOMP_T;
 typedef unsigned short NORMTYPE;
 
 // clang-format off
+
+/*
+Expected sensor column ordering for each model
+
+#define ACCELEROMETERX_S_ModelName 0
+#define ACCELEROMETERY_S_ModelName 1
+#define ACCELEROMETERZ_S_ModelName 2
+
+*/
 
 #ifdef __cplusplus
 extern "C"

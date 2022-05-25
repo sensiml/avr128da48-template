@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------
-* Copyright (c) 2020 SensiML Coproration
+* Copyright (c) 2022 SensiML Corporation
 *
 * Redistribution and use in source and binary forms, with or without
 * modification, are permitted provided that the following conditions are met:
@@ -30,7 +30,7 @@
 * @file kb.h
 * @author SensiML
 *
-* @brief Contains the main APIs for interfacing with the Knowlege Pack.
+* @brief Contains the main APIs for interfacing with the Knowledge Pack.
 *
 */
 
@@ -42,7 +42,7 @@
 #define SENSIML_NUMBER_OF_MODELS 1
 
 //Model Indexes to use for calls
-#define KB_MODEL_train_100_1_rank_0_INDEX 0
+#define KB_MODEL_ModelName_INDEX 0
 
 #define MAX_VECTOR_SIZE 3
 
@@ -100,12 +100,12 @@ int kb_flush_model_buffer(int model_index);
 *   4. Runs any segment filters or segment transforms
 *   5. Generates Features
 *   6. Runs any Feature Transforms
-*   7. Classify the resulting feature vector using the classifer and returns the result.
+*   7. Classify the resulting feature vector using the classifier and returns the result.
 *
-* @param[in] pSample Pointer to a single time point of data accross senseors (ie. ax,ay,az)
-* @param[in] nsesnors number of channels of data or columns in pSample
+* @param[in] pSample Pointer to a single time point of data across sensors (ie. ax,ay,az)
+* @param[in] nsensors number of channels of data or columns in pSample
 * @param[in] model_index model index to run.
-* @returns Classification results. 0 if Unkown
+* @returns Classification results. 0 if Unknown
 *                                 -1 when a segment hasn't yet been identified
 *                                 -2 when a segment has been filtered
 */
@@ -141,7 +141,7 @@ void kb_add_segment(uint16_t *pBuffer, int len, int nbuffs, int model_index);
 *   5. Classify the resulting feature vector using the classifier and returns the result.
 *
 * @param[in] model_index model index to run.
-* @returns Classification results. 0 if Unkown
+* @returns Classification results. 0 if Unknown
 *                                 -1 when a segment hasn't yet been identified
 *                                 -2 when a segment has been filtered
 */
@@ -152,11 +152,11 @@ int kb_run_segment(int model_index);
 
 
 /**
-* @brief Takes a a single frame of data from the sensor at a time
+* @brief Takes a single frame of data from the sensor at a time
 * adds the data to the models internal ring buffer
 *
 * @param[in] pSample pointer to the sensor data array.
-* @param[in] nsesnors number of channels of data or columns in pSample
+* @param[in] nsensors number of channels of data or columns in pSample
 * @param[in] model_index model index to run.
 * @returns 1 if added 0 if filtered.
 */
@@ -241,7 +241,7 @@ int kb_set_feature_vector(int model_index, uint8_t * feature_vector);
 int kb_recognize_feature_vector(int model_index);
 
 /**
-* @brief Performs the feature transform and classificaiton step on a
+* @brief Performs the feature transform and classification step on a
 * feature vectors
 *
 * @param[in] model_index Model index to use.
@@ -274,7 +274,7 @@ const uint8_t *kb_get_model_uuid_ptr(int model_index);
 
 
 /**
-* @brief Gets the Segment for debug printing, saving.
+* @brief Gets the length of the segment in the ring buffer..
 *
 * @param[in] model_index Model index to use.
 * @return size of the current segment in the model
@@ -282,12 +282,26 @@ const uint8_t *kb_get_model_uuid_ptr(int model_index);
 int kb_get_segment_length(int model_index);
 
 /**
-* @brief Gets the Segment length
+* @brief Gets the length of the segment in the ring buffer.
+*
+* Note: If this model has more than one feature bank, you will need to
+* multiply the segment length times the number of feature banks to get 
+* the true samples. This segment length only returns the length of the 
+* segment data in the ring buffer.
 *
 * @param[in] model_index Model index to use.
 * @param[in] p_sg_len pointer to fill with segment length
 */
 void sml_get_segment_length(int model_index, int *p_seg_len);
+
+/**
+* @brief Gets the number of feature banks used by a model. Feature banks allow stacking of 
+* features from multiple segments of data as input into the classifier.
+*
+* @param[in] model_index Model index to use.
+* @param[in] p_feature_bank_number pointer to fill with number of feature banks used by model
+*/
+void sml_get_feature_bank_number(int model_index, int *p_feature_bank_number);
 
 /**
 * @brief Gets the current index of the segment
@@ -329,7 +343,7 @@ void kb_get_feature_vector_v2(int model_index, uint8_t *fv_arr);
 /**
 * @brief Gets the currently computed feature vector for model index
 *
-* depricated
+* deprecated
 *
 * @param[in] model_index Model index to use.
 * @param[in] fv_arr Feature Vector to copy into
@@ -369,7 +383,7 @@ int kb_get_log_level();
 * @param[in] model_index model index to use.
 */
 int kb_flush_model(int model_index);
-#define kb_flush_model flush_model // depricated
+#define kb_flush_model flush_model // deprecated
 
 
 /**
@@ -388,7 +402,7 @@ int kb_get_model_pattern(int model_index, int pattern_index, void *pattern);
 /**
 * @brief Add the most recently classified pattern to the database of patterns.
 *
-* After receiving a classification, you can tell the model to add this classifiaction as
+* After receiving a classification, you can tell the model to add this classification as
 * a pattern with a specific category as well as an influence field. The larger the field
 * the larger the area this pattern can be activated in.
 *
@@ -410,7 +424,7 @@ int kb_add_last_pattern_to_model(int model_index, uint16_t category, uint16_t in
 *
 * @returns 0 if model does not support dynamic updates
 * 		   1 if model was successfully updated
-*         -1 if model can not be updated anymore
+*         -1 if model cannot be updated anymore
 */
 int kb_add_custom_pattern_to_model(int model_index, uint8_t *feature_vector, uint16_t category, uint16_t influence);
 
@@ -422,7 +436,7 @@ int kb_add_custom_pattern_to_model(int model_index, uint8_t *feature_vector, uin
 * @param[in] category Category to set the for the new pattern.
 *
 * @returns 0 if model does not support scoring
-* 		   -1 if model can not be scored anymore
+* 		   -1 if model cannot be scored anymore
 * 		    1 if model was successfully scored
 */
 int kb_score_model(int model_index, uint16_t category);
@@ -445,14 +459,14 @@ int kb_retrain_model(int model_index);
 *
 * This performs the same as kb_run_model, but is meant for models using cascade
 * feature generation this is different than run model as it will also compute the
-* features for each of its children models when it recieves a classification,
-* Classification results will be 0 if unkown through the classification numbers
-* you have. This function returns -1 when it is wainting for more data to create
+* features for each of its children models when it receives a classification,
+* Classification results will be 0 if unknown through the classification numbers
+* you have. This function returns -1 when it is waiting for more data to create
 * a classification.* returns -2 when features were generated for a feature bank
 *
 *
-* @param[in] pSample Pointer to a single time point of data accross senseors (ie. ax,ay,az)
-* @param[in] nsesnors (unused currently)
+* @param[in] pSample Pointer to a single time point of data across sensors (ie. ax,ay,az)
+* @param[in] nsensors (unused currently)
 * @param[in] model_index Model index to use.
 */
 
@@ -467,13 +481,13 @@ int kb_run_model_with_cascade_features(SENSOR_DATA_T *pSample, int nsensors, int
 * in the cascade have been filled, then reset the number of feature banks to 0.
 * This is different from run model with cascade features, which treats the feature
 * banks as a circular buffer and constantly classifiers
-* Classification results will be 0 if unkown through the classification numbers
-* you have. This function returns -1 when it is wainting for more data to create
+* Classification results will be 0 if unknown through the classification numbers
+* you have. This function returns -1 when it is waiting for more data to create
 * a classification.* returns -2 when features were generated for a feature bank
 *
 *
-* @param[in] pSample Pointer to a single time point of data accross senseors (ie. ax,ay,az)
-* @param[in] nsesnors (unused currently)
+* @param[in] pSample Pointer to a single time point of data across sensors (ie. ax,ay,az)
+* @param[in] nsensors (unused currently)
 * @param[in] model_index Model index to use.
 */
 
@@ -492,13 +506,13 @@ int kb_segment_with_cascade_features(SENSOR_DATA_T *pSample, int nsensors, int m
 * in the cascade have been filled, then reset the number of feature banks to 0.
 * This is different from run model with cascade features, which treats the feature
 * banks as a circular buffer and constantly classifiers
-* Classification results will be 0 if unkown through the classification numbers
-* you have. This function returns -1 when it is wainting for more data to create
+* Classification results will be 0 if unknown through the classification numbers
+* you have. This function returns -1 when it is waiting for more data to create
 * a classification.* returns -2 when features were generated for a feature bank
 *
 *
-* @param[in] pSample Pointer to a single time point of data accross senseors (ie. ax,ay,az)
-* @param[in] nsesnors (unused currently)
+* @param[in] pSample Pointer to a single time point of data across sensors (ie. ax,ay,az)
+* @param[in] nsensors (unused currently)
 * @param[in] model_index Model index to use.
 */
 int kb_run_model_with_cascade_reset(SENSOR_DATA_T *pSample, int nsensors, int model_index);
@@ -514,8 +528,8 @@ int kb_run_model_with_cascade_reset(SENSOR_DATA_T *pSample, int nsensors, int mo
 * After classification all of the feature banks are emptied.
 * This is different from run model, which treats the feature banks as a circular
 * buffer and constantly classifiers popping the oldest and adding the newest.
-* Classification results will be 0 if unkown through the classification numbers
-* you have. This function returns -1 when it is wainting for more data to create
+* Classification results will be 0 if unknown through the classification numbers
+* you have. This function returns -1 when it is waiting for more data to create
 * returns -2 when features were generated for a feature bank
 * a classification
 *

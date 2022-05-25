@@ -1,9 +1,6 @@
 #ifndef _KB_DEFINES_H_
 #define _KB_DEFINES_H_
 #include "kb_typedefs.h"
-#if defined(WIN32) || defined(KBSIM)
-#include <sys/time.h>
-#endif
 #include "stdio.h"
 #ifdef __cplusplus
 extern "C"

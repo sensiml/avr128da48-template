@@ -269,7 +269,7 @@ int main ( void )
             ringbuffer_size_t rdcnt;
             snsr_dataframe_t const *ptr = (snsr_dataframe_t const *) ringbuffer_get_read_buffer(&snsr_buffer, &rdcnt);
             while (rdcnt--) {
-                int ret = sml_recognition_run((snsr_data_t *) ptr++, SNSR_NUM_AXES);
+                int ret = sml_recognition_run((snsr_data_t *) ptr++,1, SNSR_NUM_AXES,0);
                 ringbuffer_advance_read_index(&snsr_buffer, 1);
                 
                 if (ret >= 0) {                    

@@ -1,19 +1,13 @@
-#ifndef SML_OUTPUT_H
-#define	SML_OUTPUT_H
+#ifndef __SML_OUTPUT_H_
+#define __SML_OUTPUT_H_
 
+#include <stdbool.h>
 #include <stdint.h>
+#include <string.h>
 
-uint32_t sml_output_init(void *p_module);
 
 uint32_t sml_output_results(uint16_t model, uint16_t classification);
 
-#ifdef	__cplusplus
-extern "C" {
-#endif /* __cplusplus */
+uint32_t sml_output_init(void * p_module);
 
-#ifdef	__cplusplus
-}
-#endif /* __cplusplus */
-
-#endif	/* SML_OUTPUT_H */
-
+#endif //__SML_OUTPUT_H_

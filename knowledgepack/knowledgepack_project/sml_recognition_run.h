@@ -1,17 +1,8 @@
-#ifndef SML_RECOGNITION_RUN_H
-#define	SML_RECOGNITION_RUN_H
-
+#ifndef __SML_RECOGNITION_RUN_H__
+#define __SML_RECOGNITION_RUN_H__
 #include "app_config.h"
+#include "kb.h"
 
-#ifdef	__cplusplus
-extern "C" {
-#endif /* __cplusplus */
+int sml_recognition_run(signed short *data_batch, int batch_sz, uint8_t num_sensors, uint32_t sensor_id);
 
-int sml_recognition_run(snsr_data_t *data, int num_sensors);
-
-#ifdef	__cplusplus
-}
-#endif /* __cplusplus */
-
-#endif	/* SML_RECOGNITION_RUN_H */
-
+#endif //__SML_RECOGNITION_RUN_H__

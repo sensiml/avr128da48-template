@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>avr128da48-curiosity-sensiml-fan-monitoring-mplab-mcc</name>
+            <name>avr128da48-template</name>
             <creation-uuid>6e8f6c52-c41b-4ad2-9b34-4bd7c58b6afe</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
