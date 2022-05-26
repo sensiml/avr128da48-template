@@ -1,6 +1,5 @@
 [![MCHP](images/microchip.png)](https://www.microchip.com)
 # Application Template using AVR128DA48 Curiosity Nano
-| :--: |
 
 
 The demo project runs on the [AVR Curiosity Nano](https://www.microchip.com/developmenttools/ProductDetails/EV45Y33A) with the Bosch BMI160 ([Mikroe IMU2 click board](https://www.mikroe.com/6dof-imu-2-click)) or TDK ICM42688 ([Mikroe IMU14 click board](https://www.mikroe.com/6dof-imu-14-click)) sensors.
@@ -27,17 +26,16 @@ The demo project runs on the [AVR Curiosity Nano](https://www.microchip.com/deve
 To build data logging firmware for different sensor configurations, visit the [ml-avrda-cnano-imu-data-logger](https://github.com/MicrochipTech/ml-avrda-cnano-imu-data-logger) repository.
 
 ## Sensor Configuration
-The sensor configuration used in this demo is summarized in the table below. These settings can be changed by modifying `app_config.h`.
+Although this project is currently configured to use test the data sensor configuration is summarized in the table below. These settings can be changed by modifying `app_config.h`.
 
 | IMU Sensor | Axes | Sampling Rate | Accelerometer Range | Gyrometer Range |
 | --- | --- | --- | --- | --- |
 | Bosch BMI160 | Ax, Ay, Az, Gx, Gy, Gz | 100Hz | 2G | 125DPS |
 
 ## Firwmare Operation
-The firmware will reflect the state of operation of the demo using the onboard LEDs; this behavior is summarized in the table below.
+Using the test data provided in the knowledge pack, the classifications will count 1,2,3,3,2,1.
 
-
-In addition, the firmware also prints the classification output for each inference over the UART port. To read the UART port output, use a terminal emulator of your choice (e.g., PuTTY) with the following settings:
+The firmware prints the classification output for each inference over the UART port. To read the UART port output, use a terminal emulator of your choice (e.g., PuTTY) with the following settings:
 
 - Baudrate 115200
 - Data bits 8
@@ -59,4 +57,4 @@ Measured with the BMI160 sensor configuration, ``-O2`` level compiler optimizati
 
 
 ## Summary
-This example illustrates how you can use the AVR128DA48 for predictive maintenance applications. For more information visit the companion guide for this repository at [microchip.wikidot.com/machine-learning:avr-fan-condition-monitoring-with-sensiml](http://microchip.wikidot.com/machine-learning:avr-fan-condition-monitoring-with-sensiml).
+The example firmware in this repository will print test classifications.  
