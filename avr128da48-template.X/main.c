@@ -228,7 +228,7 @@ int main ( void )
         app_failed = 0;
         break;
     }
-    
+#ifdef VOTING_SUPPORT    
     // Use a majority voting scheme for prediction post processing
 #define NUM_CLASSES 7U
 #define NUM_VOTES   3U    
@@ -236,6 +236,7 @@ int main ( void )
     int clsid = 1;
     int votehist[NUM_VOTES] = {1};
     int votecounts[NUM_CLASSES] = {0};
+#endif
     while (!app_failed)
     {
         /* Maintain state machines of all system modules. */
@@ -271,7 +272,7 @@ int main ( void )
             while (rdcnt--) {
                 int ret = sml_recognition_run((snsr_data_t *) ptr++,1, SNSR_NUM_AXES,0);
                 ringbuffer_advance_read_index(&snsr_buffer, 1);
-                
+#ifdef VOTING_SUPPORT                
                 if (ret >= 0) {                    
                     /* Update the voting counts */
                     votecounts[votehist[0]]--;
@@ -324,6 +325,7 @@ int main ( void )
                         }
                     }                 
                 }
+#endif                
             }
         }
     }

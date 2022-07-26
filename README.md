@@ -59,4 +59,4 @@ Measured with the BMI160 sensor configuration, ``-O2`` level compiler optimizati
 
 
 ## Summary
-This example illustrates how you can use the AVR128DA48 for predictive maintenance applications. For more information visit the companion guide for this repository at [microchip.wikidot.com/machine-learning:avr-fan-condition-monitoring-with-sensiml](http://microchip.wikidot.com/machine-learning:avr-fan-condition-monitoring-with-sensiml).
+This example includes a knowledge pack that will generate a test pattern 1,2,3,3,2,1..  
