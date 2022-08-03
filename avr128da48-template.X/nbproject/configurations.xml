@@ -178,7 +178,7 @@
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="AVR-Dx_DFP" vendor="Microchip" version="1.9.119"/>
+        <pack name="AVR-Dx_DFP" vendor="Microchip" version="1.10.124"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
